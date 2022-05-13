@@ -19,10 +19,6 @@ public abstract class JobField {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public static int getNextId() {
         return nextId;
     }
