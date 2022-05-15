@@ -6,6 +6,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.launchcode.techjobs.oo.*;
 
+import java.util.Objects;
+
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 
@@ -37,12 +39,16 @@ public class JobTest {
             assertEquals(jobFull.getPositionType().getValue(), new PositionType("Quality control").getValue());
             assertEquals(jobFull.getCoreCompetency().getValue(), new CoreCompetency("Persistence").getValue());
 
-            assertTrue((jobFull.getId() != jobExTwo.getId()));
-            assertTrue(jobFull.getId() != jobEx.getId());
-            assertTrue(jobFull.getId() >= 1);
-            assertTrue(jobFull.getClass().toString().equals("class org.launchcode.techjobs.oo.Job"));
-            assertTrue(jobFull.getId() < jobEx.getId());
             assertTrue(!new Job().equals(new Job()));
+            jobFull.setCoreCompetency( new CoreCompetency("Stubborn"));
+            assertTrue(Objects.equals(jobFull.getCoreCompetency().getValue(), "Stubborn"));
+            assertTrue(jobFull.getId() >= 1);
+            assertTrue((jobFull.getId() < jobExTwo.getId()));
+            assertTrue(jobEx.getId() > jobFull.getId() && jobEx.getId() < jobExTwo.getId());
+            assertTrue(jobFull.getClass().toString().equals("class org.launchcode.techjobs.oo.Job"));
+
+
+
         }
 
         @Test
